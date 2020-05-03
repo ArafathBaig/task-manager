@@ -1,10 +1,16 @@
 //CRUD operation
 
-const mongodb = require('mongodb')
-const MongoClient = mongodb.MongoClient
+// const mongodb = require('mongodb')
+// const MongoClient = mongodb.MongoClient
+
+const {MongoClient, ObjectId} = require('mongodb')
 
 const connectionURL = 'mongodb://127.0.0.1:27017'
 const databaseName = 'task-manager'
+
+const id = new ObjectId()
+console.log(id);
+console.log(id.getTimestamp())
 
 MongoClient.connect(connectionURL,{ useNewUrlParser : true }, (error, client) => {
 
@@ -13,16 +19,17 @@ MongoClient.connect(connectionURL,{ useNewUrlParser : true }, (error, client) =>
     }
 
     const db = client.db(databaseName)
-    // db.collection('users').insertOne({
-    //     name: 'Arafath',
-    //     age: 20
-    // }, (error, result) => {
-    //     if(error){
-    //         return console.log("Unable to insert!")
-    //     }
+    db.collection('users').insertOne({
+        _id: id,
+        name: 'Vikram',
+        age: 26
+    }, (error, result) => {
+        if(error){
+            return console.log("Unable to insert!")
+        }
 
-    //     console.log(result.ops)
-    // })
+        console.log(result.ops)
+    })
 
     // db.collection('users').insertMany([
     //     {
@@ -42,24 +49,24 @@ MongoClient.connect(connectionURL,{ useNewUrlParser : true }, (error, client) =>
     //     console.log(result.ops)
     // })
 
-    db.collection('tasks').insertMany([
-        {
-            description: "Do it.",
-            completed: true
-        },
-        {
-            description: "Ate food.",
-            completed: false
-        },
-        {
-            description: "Champestanu",
-            completed: true
-        }
-    ], (error, result) => {
-        if(error){
-            return console.log("Unable to insert")
-        }
+    // db.collection('tasks').insertMany([
+    //     {
+    //         description: "Do it.",
+    //         completed: true
+    //     },
+    //     {
+    //         description: "Ate food.",
+    //         completed: false
+    //     },
+    //     {
+    //         description: "Champestanu",
+    //         completed: true
+    //     }
+    // ], (error, result) => {
+    //     if(error){
+    //         return console.log("Unable to insert")
+    //     }
 
-        console.log(result.ops)
-    })
+    //     console.log(result.ops)
+    // })
 })
