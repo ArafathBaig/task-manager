@@ -15,13 +15,27 @@ MongoClient.connect(connectionURL,{ useNewUrlParser : true }, (error, client) =>
     }
 
     const db = client.db(databaseName)
-    
-    // db.collection('users').find({ name : 'Arafath'}).toArray((error, users)  => {
-    //     console.log(users)
-    // })
+   
+    // db.collection('users').updateOne({
+    //     _id: ObjectId("5ead580fac64760fd0a2725a")
+    // }, {
+    //     $inc : {
+    //         age: 1
+    //     }
+    // }).then((result) => {
+    //     console.log(result)
+    // }).catch(error => {
+    //     console.log(error)
+        
+    // } )
 
-    db.collection('tasks').find({ completed : false}).toArray((error, users) => {
-        console.log(users)
+    db.collection('users').deleteMany({
+        age: 20
+    }).then(result => {
+        console.log(result)
+    }).catch(error => {
+        console.log(error)
     })
+    
        
 })
