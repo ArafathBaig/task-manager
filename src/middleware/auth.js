@@ -12,6 +12,7 @@ const auth = async (req, res, next) => {
             throw new Error()
         }
 
+        req.token = token
         req.user = user
         next()
     }catch(e){
@@ -21,4 +22,3 @@ const auth = async (req, res, next) => {
 
 module.exports = auth
 
-ada
