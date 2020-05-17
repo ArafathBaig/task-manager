@@ -1,18 +1,17 @@
-const sgMail = require('@sendgrid/mail')
+const nodemailer = require('nodemailer')
+const sendgridTransport = require('nodemailer-sendgrid-transport')
 
-const sendgridAPIKey = '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'
+ 
 
-sgMail.setApiKey(sendgridAPIKey)
+const transporter = nodemailer.createTransport(sendgridTransport({
+    auth : {
+        api_key: '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'
+    }
+}))
 
-const sendMail = async () => {
-sgMail.send({
-    to: 'arafath.moghul@gmail.com',
+transporter.sendMail({
+    to : 'whyareyousoougly@gmail.com',
     from: 'arafath.moghul@gmail.com',
-    subject: 'This is my first creation!',
-    text: 'I hope this one actually get to you.'
-}).then(() => {
-    console.log('success')
-}).catch(e => {
-    console.log(e)
+    subject: 'Sign up success',
+    text: 'Done'
 })
-}
