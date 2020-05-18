@@ -5,13 +5,36 @@ const sendgridTransport = require('nodemailer-sendgrid-transport')
 
 const transporter = nodemailer.createTransport(sendgridTransport({
     auth : {
-        api_key: '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'
-    }
+        api_key: "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"
+    },
 }))
 
-transporter.sendMail({
-    to : 'whyareyousoougly@gmail.com',
-    from: 'arafath.moghul@gmail.com',
-    subject: 'Sign up success',
-    text: 'Done'
+
+
+const sendWelcomeEmail = (email, name) => {
+
+    transporter.sendMail({
+    sendMail : true,
+    to : email,
+    from: 'whyareyousoougly@gmail.com',
+    subject: 'Welcome Aboard',
+    text: `Welcome to the app ${name}. Let me know how you get along with the app.`
 })
+
+}
+
+const sendCancellationEmail = (email, name) => {
+
+    transporter.sendMail({
+        sendMail: true,
+        to: email,
+        from: "whyareyousoougly@gmail.com",
+        subject: 'Sorry to see you go',
+        text: `Sorry ${name}, We are sad that you are letting us go. Thank you for spending time with us.`
+    })
+}
+
+module.exports = {
+    sendWelcomeEmail,
+    sendCancellationEmail
+}
