@@ -1,5 +1,9 @@
 {
   "name": "task-manager",
+  "engines": {
+    "node": "12.6.1",
+    "npm" : "6.13.4"
+  },
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
