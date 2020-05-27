@@ -2,7 +2,7 @@
   "name": "task-manager",
   "version": "1.0.0",
   "description": "",
-  "engines" : {
+  "engines": {
     "node": "12.16.1",
     "npm": "6.13.4"
   },
@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "env-cmd ./config/dev.env nodemon src/index.js",
-    "test":"jest"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "env-cmd": "^8.0.2",
-    "jest": "^23.6.0",
+    "jest": "^26.0.1",
     "nodemon": "^1.18.9"
   }
 }
